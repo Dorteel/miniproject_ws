@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>miniproject</name>
+  <version>0.0.0</version>
+  <description>The package created for the miniproject</description>
+
+  <maintainer email="rob1b264c@student.aau.dk">B264c</maintainer>
+
+  <license>BSD</license>
+
+  <author email="kkan14@student.aau.dk">Kasper Krog Andersen</author> -->
+  <author email="aflodg15@student.aau.dk">Anders Flodgaard</author> -->
+  <author email="mbalaz15@student.aau.dk">Milan Balazs</author> -->
+  <author email="madami15@student.aau.dk">Mark Adamik</author> -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,44 @@
+#include <ros/ros.h>
+#include <geometry_msgs/Twist.h>
+#include <stdlib.h> // For the rand() and RAND_MAX
+
+int main (int argc, char **argv) {
+	// Initiating the ROS system and registering our program
+	// with the ROS master as a node
+	ros::init (argc, argv, "publish_velocity");
+	ros::NodeHandle n;
+
+	// Creating a publisher object
+	ros::Publisher pub=n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
+
+	// Seeding the random number generator with starting value
+	// using time at given second
+	srand(time(0));
+
+	ros::Rate rate(2);
+	while (ros::ok()){
+		// Creating a geometry_msgs::Twist object called msg
+		geometry_msgs::Twist msg;
+		// Setting linear x to a random number between 0 and 1
+		// msg.linear.x=double(rand())/double(RAND_MAX);
+
+		// Setting speed to 0.2 just to be safe
+		msg.linear.x = 0.1;
+		// Setting angular z to a random number between -1 and 1
+		msg.angular.z=2*double(rand())/double(RAND_MAX)-1;
+
+		// Publishing the message
+		pub.publish(msg);
+
+		// Sending the message to rosout with the details
+		// in case we want it to appear on the screen (this can be left out)
+		ROS_INFO_STREAM("Sending random velocity command: "
+			<< "linear= " << msg.linear.x
+			<< "angular= " << msg.angular.z);
+
+		// Delaying the loop
+		rate.sleep();
+		}
+	}
+
+	
